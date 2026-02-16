@@ -1,14 +1,13 @@
 import { useMemo, useState } from 'react';
 import DestinationGrid from '../components/DestinationGrid';
-import { destinationTags, destinations } from '../data/destinations';
-import type { DestinationTag } from '../types';
+import { destinationInterests, destinations, type TripInterest } from '../data/destinations';
 
 export default function DestinationsPage() {
-  const [activeFilter, setActiveFilter] = useState<DestinationTag | 'Tous'>('Tous');
+  const [activeFilter, setActiveFilter] = useState<TripInterest | 'Tous'>('Tous');
 
   const filteredDestinations = useMemo(() => {
     if (activeFilter === 'Tous') return destinations;
-    return destinations.filter((destination) => destination.tags.includes(activeFilter));
+    return destinations.filter((destination) => destination.interests.includes(activeFilter));
   }, [activeFilter]);
 
   return (
@@ -23,15 +22,15 @@ export default function DestinationsPage() {
         >
           Tous
         </button>
-        {destinationTags.map((tag) => (
+        {destinationInterests.map((interest) => (
           <button
-            key={tag}
-            onClick={() => setActiveFilter(tag)}
+            key={interest}
+            onClick={() => setActiveFilter(interest)}
             className={`rounded-full border px-4 py-2 text-sm transition ${
-              activeFilter === tag ? 'border-gold bg-gold/20 text-gold-soft' : 'border-slate-700 text-slate-200 hover:border-gold/60'
+              activeFilter === interest ? 'border-gold bg-gold/20 text-gold-soft' : 'border-slate-700 text-slate-200 hover:border-gold/60'
             }`}
           >
-            {tag}
+            {interest}
           </button>
         ))}
       </div>

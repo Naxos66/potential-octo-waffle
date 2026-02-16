@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { Destination } from '../types';
+import type { Destination } from '../data/destinations';
+import { saveBooking } from '../lib/bookings';
 
 interface BookingModalProps {
   destination: Destination;
@@ -30,13 +31,20 @@ export default function BookingModal({ destination, isOpen, onClose }: BookingMo
 
         {isSubmitted ? (
           <div className="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-4 text-emerald-300">
-            Demande enregistrée ! Un conseiller temporel vous contactera bientôt.
+            Réservation confirmée ! Votre voyage apparaît maintenant dans la page « My Trip ».
           </div>
         ) : (
           <form
             className="space-y-3"
             onSubmit={(event) => {
               event.preventDefault();
+              saveBooking(destination, {
+                budget: destination.basePrice,
+                duration: '3 jours',
+                interests: destination.interests,
+                risk: destination.recommendedRisk,
+                formula: 'Formule Classique',
+              });
               setIsSubmitted(true);
             }}
           >
@@ -46,7 +54,7 @@ export default function BookingModal({ destination, isOpen, onClose }: BookingMo
             <input required type="date" className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-white" />
             <textarea placeholder="Notes" rows={3} className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-white" />
             <button type="submit" className="w-full rounded-lg bg-gold px-4 py-2 font-semibold text-slate-900 transition hover:bg-gold-soft">
-              Confirmer la demande
+              Confirmer la réservation
             </button>
           </form>
         )}

@@ -17,6 +17,12 @@ export default function Header() {
           <Link to="/destinations" className="transition hover:text-gold-soft">
             Destinations
           </Link>
+          <Link to="/personalize" className="transition hover:text-gold-soft">
+            Personnaliser
+          </Link>
+          <Link to="/my-trip" className="transition hover:text-gold-soft">
+            My Trip
+          </Link>
           {sectionItems.map((item) => (
             <Link key={item.label} to={`/${item.hash}`} className="transition hover:text-gold-soft">
               {item.label}

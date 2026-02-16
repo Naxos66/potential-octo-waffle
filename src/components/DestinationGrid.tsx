@@ -1,4 +1,4 @@
-import type { Destination } from '../types';
+import type { Destination } from '../data/destinations';
 import DestinationCard from './DestinationCard';
 
 interface DestinationGridProps {

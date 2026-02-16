@@ -6,6 +6,8 @@ import ScrollToHash from './components/ScrollToHash';
 import DestinationDetailPage from './pages/DestinationDetailPage';
 import DestinationsPage from './pages/DestinationsPage';
 import HomePage from './pages/HomePage';
+import MyTripPage from './pages/MyTripPage';
+import PersonalizePage from './pages/PersonalizePage';
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/destinations" element={<DestinationsPage />} />
           <Route path="/destinations/:id" element={<DestinationDetailPage />} />
+          <Route path="/personalize" element={<PersonalizePage />} />
+          <Route path="/my-trip" element={<MyTripPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
