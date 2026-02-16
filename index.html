@@ -6,6 +6,23 @@
     <meta name="description" content="TimeTravel Agency — Webapp interactive de voyages temporels" />
     <title>TimeTravel Agency</title>
   </head>
+  <script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6993392cad39bc7a14b8abae' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: { url: "https://runtime-api.voiceflow.com" }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+      v.type = "text/javascript";
+      s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+
   <body class="bg-slate-950">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
