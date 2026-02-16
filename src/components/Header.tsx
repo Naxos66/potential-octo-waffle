@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 
-const navItems = [
-  { label: 'Destinations', href: '/destinations' },
-  { label: 'Agence', href: '/#agence' },
-  { label: 'Chat', href: '/#chat' },
-  { label: 'Footer', href: '/#footer' },
+const sectionItems = [
+  { label: 'Agence', hash: '#agence' },
+  { label: 'Chat', hash: '#chat' },
+  { label: 'Footer', hash: '#footer' },
 ];
 
 export default function Header() {
@@ -15,10 +14,13 @@ export default function Header() {
           TimeTravel Agency
         </Link>
         <nav className="flex items-center gap-4 text-sm text-slate-200">
-          {navItems.map((item) => (
-            <a key={item.label} href={item.href} className="transition hover:text-gold-soft">
+          <Link to="/destinations" className="transition hover:text-gold-soft">
+            Destinations
+          </Link>
+          {sectionItems.map((item) => (
+            <Link key={item.label} to={`/${item.hash}`} className="transition hover:text-gold-soft">
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
