@@ -10,9 +10,9 @@ export default function ChatWidget() {
       v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
       v.type = "text/javascript";
       v.onload = () => {
-        if (window.voiceflow && window.voiceflow.chat) {
-          window.voiceflow.chat.init({
-            el: document.getElementById('vf-widget'), // Le container du widget
+        if ((window as any).voiceflow && (window as any).voiceflow.chat) {
+          (window as any).voiceflow.chat.init({
+            el: document.getElementById('vf-widget'),
             verify: { projectID: '6993392cad39bc7a14b8abae' },
             url: 'https://general-runtime.voiceflow.com',
             versionID: 'production',
